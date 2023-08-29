@@ -21,6 +21,11 @@ const PlanSchema = new mongoose.Schema({
     type: Boolean,
     required: false,
   },
+  costBenefit: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   status: {
     type: Boolean,
     required: true,

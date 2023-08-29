@@ -31,7 +31,7 @@ app.post(
   }
 );
 
-app.patch(
+app.put(
   "/plans/:id",
   validateFields(["name", "speed", "prefix", "price"]),
   async (req, res) => {
@@ -64,7 +64,7 @@ app.post(
   }
 );
 
-app.patch(
+app.put(
   "/orders/:id",
   validateFields(["clientName", "clientEmail", "clientPhone", "planId"]),
   async (req, res) => {

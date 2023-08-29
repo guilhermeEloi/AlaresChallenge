@@ -17,14 +17,21 @@ const PlanSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  signatures: {
+  signatureWifi: {
+    type: Boolean,
+    required: false,
+  },
+  signatureGames: {
+    type: Boolean,
+    required: false,
+  },
+  signatureMovies: {
     type: Boolean,
     required: false,
   },
   costBenefit: {
     type: Boolean,
     required: false,
-    default: false,
   },
   status: {
     type: Boolean,

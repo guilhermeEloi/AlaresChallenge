@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -37,12 +38,14 @@ export default function Home() {
     const [planSelected, setPlanSelected] = useState("");
     const [showModal, setShowModal] = useState(false);
 
+    const navigate = useNavigate();
+
     const listAllPlans = async () => {
         try {
             const response = await api.get("/plans");
             setPlans(response.data)
         } catch (err) {
-            console.log("erro", err)
+            console.log("Erro: ", err)
             toast.error("Erro ao listar planos!");
         }
     }
@@ -81,7 +84,7 @@ export default function Home() {
         <Container>
             <Header>
                 <LogoImg src={ImgLogo} alt="Alares" />
-                <BtnAdm onClick={() => console.log('teste')}>
+                <BtnAdm onClick={() => navigate("/admin")}>
                     <BtnAdmText>Acessar painel administrativo</BtnAdmText>
                 </BtnAdm>
             </Header>
@@ -89,7 +92,7 @@ export default function Home() {
                 <TitleText>Escolha o plano que se encaixa perfeitamente para você!</TitleText>
                 <ContainerContentPlans>
                     {plans && plans.map((plan) => (
-                        <PlanContainer style={{ background: plan.costBenefit === true ? "#5A53F7" : "#fff" }} key={plan._id}>
+                        <PlanContainer style={{ backgroundColor: plan.costBenefit === true ? "#5A53F7" : "#fff" }} key={plan._id}>
                             <PlanContent>
                                 <PlanName style={{ color: plan.costBenefit === true ? "#fff" : "#5A53F7" }}>{plan.name}</PlanName>
                                 <PlanSpeedText style={{ color: plan.costBenefit === true ? "#fff" : "#5A53F7" }} >{plan.speed} {plan.prefix}</PlanSpeedText>
@@ -98,21 +101,29 @@ export default function Home() {
                                         +
                                     </PlusPlans>
                                     <PlanBenefitText style={{ color: plan.costBenefit === true ? "#fff" : "#5A53F7" }}>Instalação gratuita</PlanBenefitText>
-                                    <PlusPlans>
-                                        +
-                                    </PlusPlans>
-                                    <PlanBenefitText style={{ color: plan.costBenefit === true ? "#fff" : "#5A53F7" }}>WiFi 5G</PlanBenefitText>
                                 </>
-                                {plan.signatures === true ? (
+                                {plan.signatureWifi && (
                                     <>
                                         <PlusPlans>
                                             +
                                         </PlusPlans>
-                                        <PlanBenefitStreamingText style={{ color: plan.costBenefit === true ? "#fff" : "#5A53F7" }}>Escolha 2 assinaturas de streaming sua preferência</PlanBenefitStreamingText>
+                                        <PlanSpeedText style={{ color: plan.costBenefit ? "#fff" : "#5A53F7" }}>Wi-fi</PlanSpeedText>
                                     </>
-                                ) : (
+                                )}
+                                {plan.signatureGames && (
                                     <>
-                                        <PlanBenefitStreamingText style={{ color: plan.costBenefit === true ? "#fff" : "#5A53F7" }}>Plano sem assinatura de streaming</PlanBenefitStreamingText>
+                                        <PlusPlans>
+                                            +
+                                        </PlusPlans>
+                                        <PlanSpeedText style={{ color: plan.costBenefit ? "#fff" : "#5A53F7" }}>Jogos</PlanSpeedText>
+                                    </>
+                                )}
+                                {plan.signatureMovies && (
+                                    <>
+                                        <PlusPlans>
+                                            +
+                                        </PlusPlans>
+                                        <PlanSpeedText style={{ color: plan.costBenefit ? "#fff" : "#5A53F7" }}>Canais de filmes</PlanSpeedText>
                                     </>
                                 )}
                             </PlanContent>

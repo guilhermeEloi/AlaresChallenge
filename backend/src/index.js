@@ -20,6 +20,12 @@ app.get("/plans", async (req, res) => {
   return res.status(200).json(plans);
 });
 
+app.get("/plans/:id", async (req, res) => {
+  const { id } = req.params;
+  const plan = await Plan.findById(id);
+  return res.status(200).json(plan);
+});
+
 app.post(
   "/plans",
   validateFields(["name", "speed", "prefix", "price"]),

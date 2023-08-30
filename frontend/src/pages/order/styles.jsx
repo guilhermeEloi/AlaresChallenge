@@ -76,7 +76,7 @@ export const ModalContent = styled.div`
     margin-top: 10px;
 `;
 
-export const FormText = styled.text`
+export const FormText = styled.label`
     color: #000;
     font-size: 18px;
 `;
@@ -89,7 +89,7 @@ export const Line = styled.div`
     justify-content: center;
 `;
 
-export const NormalText = styled.text`
+export const NormalText = styled.label`
     font-size: 16px;
     color: #848484;
 `;

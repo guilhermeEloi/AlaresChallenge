@@ -62,7 +62,7 @@ export default function Home() {
                         planId: planSelected
                     }
 
-                    await api.post("/order", toSend);
+                    await api.post("/orders", toSend);
 
                     toast.success("Plano contratado com sucesso!");
                     setShowModal(false);

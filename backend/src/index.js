@@ -55,7 +55,7 @@ app.delete("/plans/:id", async (req, res) => {
 });
 
 app.get("/orders", async (req, res) => {
-  const orders = await Order.find();
+  const orders = await Order.find().populate("planId");
   return res.status(200).json(orders);
 });
 

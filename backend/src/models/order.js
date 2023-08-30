@@ -14,7 +14,8 @@ const OrderSchema = new mongoose.Schema({
     required: true,
   },
   planId: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Plan",
     required: true,
   },
   status: {

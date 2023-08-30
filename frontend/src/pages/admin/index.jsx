@@ -127,21 +127,21 @@ export default function Admin() {
                                         <NormalText>Canal de filmes</NormalText>
                                     )}
                                     {item.costBenefit && (
-                                        <NormalText>Recomendação custo benefício</NormalText>
+                                        <NormalText>Custo benefício</NormalText>
                                     )}
                                 </SubLineLeftContainer>
                                 <BtnActions style={{ background: "#5A53F7" }} onClick={() => navigate(`/plan?id=${item._id}`)}>
                                     <NormalText style={{ color: "#fff", cursor: 'pointer' }}>Alterar</NormalText>
                                 </BtnActions>
-                                <BtnActions style={{ background: "#DF7676" }} onClick={() => deletePlan(item._id)}>
-                                    <NormalText style={{ color: "#fff", cursor: 'pointer' }}>Remover</NormalText>
+                                <BtnActions style={{ background: "red" }} onClick={() => deletePlan(item._id)}>
+                                    <NormalText style={{ color: "#fff", cursor: 'pointer' }}>Excluir</NormalText>
                                 </BtnActions>
                             </SubLine>
                         </Line>
                     )) : orders.map((item, index) => (
                         <Line style={{ background: index % 2 === 0 ? "#DFDEF6" : "#CDCCE5" }}>
                             <SubLine>
-                                <BtnTableText>Pedido {index + 1} - {item.planId?.name ? item.planId.name : 'excluído'}</BtnTableText>
+                                <BtnTableText>Pedido {index + 1} - {item.planId?.name ? item.planId.name : 'Plano excluído'}</BtnTableText>
                             </SubLine>
                             <SubLine>
                                 <SubLineLeftContainer style={{ width: '75%' }}>
@@ -153,8 +153,8 @@ export default function Admin() {
                                 <BtnActions style={{ background: "#5A53F7" }} onClick={() => navigate(`/order?id=${item._id}`)}>
                                     <NormalText style={{ color: "#fff", cursor: 'pointer' }}>Alterar</NormalText>
                                 </BtnActions>
-                                <BtnActions style={{ background: "#DF7676" }} onClick={() => deleteOrder(item._id)}>
-                                    <NormalText style={{ color: "#fff", cursor: 'pointer' }}>Remover</NormalText>
+                                <BtnActions style={{ background: "red" }} onClick={() => deleteOrder(item._id)}>
+                                    <NormalText style={{ color: "#fff", cursor: 'pointer' }}>Excluir</NormalText>
                                 </BtnActions>
                             </SubLine>
                         </Line>

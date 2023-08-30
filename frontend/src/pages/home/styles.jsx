@@ -97,12 +97,6 @@ export const PlanBenefitText = styled.label`
     font-weight: 600;
 `;
 
-export const PlanBenefitStreamingText = styled.label`
-    color: #5A53F7;
-    font-size: 26px;
-    font-weight: 800;
-`;
-
 export const PlusPlans = styled.label`
     color: #77F3AE;
     font-size: 24px;

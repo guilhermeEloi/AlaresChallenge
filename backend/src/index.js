@@ -59,6 +59,12 @@ app.get("/orders", async (req, res) => {
   return res.status(200).json(orders);
 });
 
+app.get("/orders/:id", async (req, res) => {
+  const { id } = req.params;
+  const order = await Order.findById(id);
+  return res.status(200).json(order);
+});
+
 app.post(
   "/orders",
   validateFields(["clientName", "clientEmail", "clientPhone", "planId"]),

@@ -21,7 +21,6 @@ import {
     PlanName,
     PlusPlans,
     PlanBenefitText,
-    PlanBenefitStreamingText,
     BtnOrder,
     PlanSpeedText,
 } from './styles';
@@ -96,12 +95,6 @@ export default function Home() {
                             <PlanContent>
                                 <PlanName style={{ color: plan.costBenefit === true ? "#fff" : "#5A53F7" }}>{plan.name}</PlanName>
                                 <PlanSpeedText style={{ color: plan.costBenefit === true ? "#fff" : "#5A53F7" }} >{plan.speed} {plan.prefix}</PlanSpeedText>
-                                <>
-                                    <PlusPlans>
-                                        +
-                                    </PlusPlans>
-                                    <PlanBenefitText style={{ color: plan.costBenefit === true ? "#fff" : "#5A53F7" }}>Instalação gratuita</PlanBenefitText>
-                                </>
                                 {plan.signatureWifi && (
                                     <>
                                         <PlusPlans>
